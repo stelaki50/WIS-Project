@@ -1,5 +1,5 @@
 <footer>
-    <div class = "copyright">Copyright 2025 stellitsa maria</div>
+    <div class = "copyright">Copyright 2025 stellitsa maria - john pism - plouto</div>
 </footer>
 
 <style>

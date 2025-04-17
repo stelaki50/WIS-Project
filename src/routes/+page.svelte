@@ -1,64 +1,34 @@
+<!-- MAIN/HOME PAGE -->
 <script>
-  import Button from './button.svelte'
-  import Header from './Header.svelte';
-  import Footer from './Footer.svelte';
-  import { images } from './imageData.js'
-  import Slide from './images/Slide.svelte';
-
-
-
-  let slides = [
-		{ image: '/images/gpu.jpg', alt: 'Image 1', attr: 'Beautiful scenery' },
-		{ image: '/images/box.jpg', alt: 'Image 2', attr: 'Sunset view' },
-	];
-
-
- 
-	let current = 0;
-
-	function next() {
-		current = (current + 1) % slides.length;
-	}
-
-	function prev() {
-		current = (current - 1 + slides.length) % slides.length;
-	}
+  	import Slide from '../components/Slide.svelte';
 
 </script>
 
-
 <main>
-  
-  <p class="eshop-title">PC-Parts e-Shop</p>  
-  
+
+	<h2>Explore the Future: Top Tech Picks for Your Next Build</h2>
+
+  	<Slide/>
+
+	
+
 </main>
 
-<Header>
-
-
-</Header>
-<Button>Home</Button>
-
-
-
-<Button>Product</Button>
-
-<Footer>
-
-</Footer>
-
-
-
-
 <style>
+
+main{
+	background-color: #8FD6E3;
+	height: 100%;
+}
+
+h2{
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 25px;
+	position: relative;
+	width: 650px;
+	height: 10px;
+	margin: 0 auto;
+	padding-top: 70px;
+}
  
- .eshop-title {
-    font-size: 36px;
-    font-weight: bold;
-    margin: 10px 0 0 0; /* Reduce top space */
-    color: #003835;
-    text-align: center
-  }
 </style>
-
-
