@@ -1,14 +1,30 @@
-from flask          import Flask, jsonify, request
-from pymongo        import MongoClient
-from flask_cors     import CORS
-from bson.objectid  import ObjectId
+from flask                  import Flask, jsonify, request
+from pymongo                import MongoClient
+from flask_cors             import CORS
+from bson.objectid          import ObjectId
+from dotenv                 import load_dotenv
+from pymongo.mongo_client   import MongoClient
+from pymongo.server_api     import ServerApi
+import os
+
+load_dotenv()
 
 app = Flask(__name__, static_url_path='/static',
-    static_folder='/home/pismi/Desktop/WIS-Project/static')
+            static_folder='/home/pismi/Desktop/WIS-Project/static')
 CORS(app, origins=["http://localhost:5173"])
-client = MongoClient("mongodb://localhost:27017/")
+
+mongo_uri = os.getenv("MONGO_URI")
+
+client = MongoClient(mongo_uri, server_api=ServerApi('1'))
 db = client["PCStore"]
 collection = db["PCParts"]
+
+# send a ping to confirm a successful connection
+try:
+    client.admin.command('ping')
+    print("Pinged your deployment. You successfully connected to MongoDB!")
+except Exception as e:
+    print(e)
 
 # serialize MongoDB documents
 def serialize_product(product):
@@ -50,24 +66,3 @@ def like_product():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-'''{
-        try {
-            const response = await fetch('http://localhost:5000/like', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ id: product._id })  // send id
-            });
-
-            if (response.ok) {
-                product.likes += 1; // update UI
-            } else {
-                const errorData = await response.json();
-                console.error("Like failed:", errorData.error);
-            }
-        } catch (err) {
-            console.error("Error:", err);
-        }
-    }'''

@@ -28,6 +28,7 @@ Make sure you have Node.js (preferably v18 or higher) installed.
 
 ```bash
 npm install
+pip install -r requirements.txt
 ```
 
 ### **3. Start the development server**
@@ -35,4 +36,12 @@ This will start the app at http://localhost:5173/ (or the next available port).
 
 ```bash
 npm run dev
+python app.py
 ```
+
+### **4. Important notices**
+This is just a demonstration of what we're trying to accomplish as a team,
+the database itself is not published here, for security reasons.
+For this safe result a .env file is created and this: MONGO_URI=mongodb+srv://username:password@your-project-db.ueop5j7.mongodb.net/?retryWrites=true&w=majority&appName=Your-Project-DB is inside of the file, so we can access safely the database.
+Also, a simple CLI script in Python (create_db.py) for adding, deleting and viewing products in our database is created.
+This script is very useful and you can test it yourself on your projects or on our project as well (after connecting to your MongoDB atlas database server).

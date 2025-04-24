@@ -1,9 +1,11 @@
-from pymongo        import MongoClient
-from insert_product import InsertProduct
-from delete_product import DeleteProduct
+from pymongo            import MongoClient
+from insert_product     import InsertProduct
+from delete_product     import DeleteProduct
+from pymongo.server_api import ServerApi
+from app                import mongo_uri
 
-# connect to MongoDB (default localhost:27017)
-client = MongoClient("mongodb://localhost:27017/")
+# connect to MongoDB
+client = MongoClient(mongo_uri, server_api=ServerApi('1'))
 
 # create or switch to a database
 db = client["PCStore"]
