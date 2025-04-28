@@ -1,16 +1,9 @@
-# 1st Section of the WIS (World Wide Web Information Systems) assignment.
+# 2nd Section of the WIS (World Wide Web Information Systems) assignment.
 
-The purpose of this assignment is to create an e-shop website of our choosing, 
-in teams of 3-4 students. It is divided into 4 sections, where the 1st section
-ask us to develop two static pages first, the homepage.html and products.html
-that are visible to the user by the structure, the content, up to the formatting 
-and the basic menu, buttons, and the rest of the interactive elements.
+The endpoints you will deploy/implement are: /search: Deploy a GET request that will accept a parameter by name and will search for a product in the database based on the name and will return the product (or products). In case it finds more than one product, then the products that will be returned will be in descending order classified by price. The request will return a list of all products found in JSON format. If no product is found, then the endpoint will return an empty list[]. For example, if you search for a product with the name Paper, then the search should return all products that have the word Paper in the name, e.g. Paper A4, Paper A3. However, if you search for a product with the name Paper A3, then the search should return only that product. If the search parameter is an empty string, then it should return all the products in the eshop. <br />
+/like: Deploy a POST request that will accept a parameter with the id of a product and will update the Likes field of the product by adding the number 1 to the existing value. <br />
+/popular-products: Develop a GET request that will return a list of the top 5 most popular products based on the number of Likes.<br />
 
-On the 2 pages there should be a header with a logo that you will select, buttons for navigating the pages and a footer for the names of the members of the team. On the homepage.html there should be the header of the page of the name of the eshop and below a slideshow with images that you will select. On the rest of the page you can put the one that matches your eshop. On the products.html page you should have at the top a search bar and below your post-product list, which will include an image of the product, and a short description.
-
-We used SvelteKit built with TypeScript. It features a component-based architecture with dynamic routing and a static assets folder for images. The project is likely designed to showcase products or interactive content via components such as Cards, Slides, and Products.
-
-The project is currently under development so in the future it will likely receive lots of changes and updates.
 
 ## Run locally
 

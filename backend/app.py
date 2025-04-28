@@ -3,7 +3,6 @@ from pymongo                import MongoClient
 from flask_cors             import CORS
 from bson.objectid          import ObjectId
 from dotenv                 import load_dotenv
-from pymongo.mongo_client   import MongoClient
 from pymongo.server_api     import ServerApi
 import os
 
@@ -28,17 +27,49 @@ try:
     client.admin.command('ping')
     print("Pinged your deployment. You successfully connected to MongoDB!")
 except Exception as e:
-    print(e)
+    print(f"An error occured: {e}")
 
 # serialize MongoDB documents
 def serialize_product(product):
     product['_id'] = str(product['_id'])
     return product
 
+# list all products
 @app.route('/api/products')
 def get_products():
     products = list(collection.find())
     return jsonify([serialize_product(p) for p in products])
+
+# like a product
+@app.route('/api/likes', methods=['POST'])
+def like_product():
+    # post request with json payload
+    data = request.get_json()
+    product_id = data.get('id')
+
+    if not product_id:
+        return jsonify({'error': 'Product ID is required'}), 400
+
+    try:
+        # finds the product matching the _id and increments likes +1
+        result = collection.update_one(
+            {'_id': ObjectId(product_id)},
+            {'$inc': {'likes': 1}})
+
+        # if no product was matched/found
+        if result.matched_count == 0:
+            return jsonify({'error': 'Product not found'}), 404
+
+        # fetch updated product to return new/updated likes count
+        updated_product = collection.find_one({'_id': ObjectId(product_id)})
+        updated_product = serialize_product(updated_product)
+        
+        return jsonify({
+            'message': 'Like added successfully',
+            'likes': updated_product.get('likes', 0)}), 200
+
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
     app.run(debug=True)

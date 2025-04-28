@@ -6,7 +6,7 @@
 <div class="poll-list">
     {#each filteredProducts as product}
         <div>
-            <Card {product}/>
+            <Card {product}/> 
         </div>
     {/each}
 </div>
