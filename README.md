@@ -1,8 +1,15 @@
-# 2nd Section of the WIS (World Wide Web Information Systems) assignment.
+# 3rd Section of the WIS (World Wide Web Information Systems) assignment.
 
-The endpoints you will deploy/implement are: /search: Deploy a GET request that will accept a parameter by name and will search for a product in the database based on the name and will return the product (or products). In case it finds more than one product, then the products that will be returned will be in descending order classified by price. The request will return a list of all products found in JSON format. If no product is found, then the endpoint will return an empty list[]. For example, if you search for a product with the name Paper, then the search should return all products that have the word Paper in the name, e.g. Paper A4, Paper A3. However, if you search for a product with the name Paper A3, then the search should return only that product. If the search parameter is an empty string, then it should return all the products in the eshop. <br />
-/like: Deploy a POST request that will accept a parameter with the id of a product and will update the Likes field of the product by adding the number 1 to the existing value. <br />
-/popular-products: Develop a GET request that will return a list of the top 5 most popular products based on the number of Likes.<br />
+In the 3rd section you are asked to connect the implementations of Section 1 and Section 2 using JavaScript, 
+in order to deploy a dynamic website. JS allows you to create interactions between a static HTML page and a REST API.<br />
+Interaction 1: When a user searches for a product (in search bar in products page), the website must do a GET request in the 
+endpoint \search (which was implemented in the 2nd Section - SectionB) using the text in the search box. When the request
+is completed, the results of the search will be appear on the products page. <br />
+Interaction 2: When a user clicks on the photo of the product (or in the like button), a POST request should happen in the endpoint
+\like to update the likes count of the product. <br />
+Interaction 3: In the slideshow of the home page, the photos of the top 5 most popular products should appear, which are returned
+from the GET request of the endpoint \popular-products. <br />
+NOTE: For the POST request you must define the "Content-Type" header to "application/json".
 
 
 ## Run locally
