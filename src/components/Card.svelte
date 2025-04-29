@@ -78,7 +78,14 @@
 }
 
 .description{
+    font-family: 'Ubuntu';
+    font-size: 15px;
     flex: 1;
+}
+
+h4{
+    font-family: 'Ubuntu';
+    font-size: 18px;
 }
 
 a {
