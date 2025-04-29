@@ -21,7 +21,35 @@
   }});
 
 async function searchEngine(variable){
-    console.log('searching for a product:', variable)
+
+    console.log('searching for a product:', variable) 
+    const res = await fetch('http://localhost:5000/api/products');
+    const data = await res.json();
+    console.log('Fetched products:', data);
+    products = data;
+    let product_find=false // Indicates if a product was found or not
+    filteredProducts = []; //At first we assume that there are not products found 
+    for (const product of products){
+      
+      if(product.name.toLowerCase().includes(variable.toLowerCase())) {
+        console.log("We find ",product);
+        product_find = true;
+        filteredProducts.push(product); //If we found a product that match with at least one word of the input user 
+        //we add it into filteredProducts
+      }
+
+    } 
+
+
+    // Checks if we find a product after searching 
+    if(product_find == false){
+      console.log("We dint find a product");
+      return filteredProducts //Return the products to show up in the web page
+    }else{
+      //If not products was found then return the empty filteredProducts 
+      return filteredProducts;
+    }
+    
   }
 
 </script>

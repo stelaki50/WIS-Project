@@ -14,7 +14,7 @@ static_dir = os.path.join(basedir, '..', 'static')
 
 app = Flask(__name__, static_url_path='/static', static_folder=static_dir)
 
-CORS(app, origins=["http://localhost:5173"])
+CORS(app, origins=["http://localhost:5174"])
 
 mongo_uri = os.getenv("MONGO_URI")
 
