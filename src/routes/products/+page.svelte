@@ -18,8 +18,11 @@
     filteredProducts = data;
   } catch (err) {
     console.error('Fetch failed:', err);
+  }});
+
+async function searchEngine(variable){
+    console.log('searching for a product:', variable)
   }
-});
 
 </script>
   

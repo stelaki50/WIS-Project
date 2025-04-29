@@ -6,7 +6,7 @@
     
 </script>
 
-<button class="{type}">
+<button class="{type}" on:click>
     <slot />
 </button>
 

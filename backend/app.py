@@ -14,7 +14,7 @@ static_dir = os.path.join(basedir, '..', 'static')
 
 app = Flask(__name__, static_url_path='/static', static_folder=static_dir)
 
-CORS(app, origins=["http://localhost:5173"])
+CORS(app, origins=["http://localhost:5174"])
 
 mongo_uri = os.getenv("MONGO_URI")
 
@@ -70,6 +70,25 @@ def like_product():
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
+# search for a product by name
+@app.route('/api/search', methods=['GET'])
+def search_products():
+    name_query = request.args.get('name', '')
+
+    if not name_query:
+        return jsonify({'error': 'Name query is required'}), 400
+
+    try:
+        # find products where name matches exactly and sort them in descending order
+        products = list(collection.find({'name': {'$regex': name_query, '$options': 'i'}}).sort('price', -1))
+
+        serialized_products = [serialize_product(p) for p in products]
+
+        return jsonify(serialized_products), 200
+
+    except Exception as e:
+        return jsonify({'An error occured': str(e)}), 500
 
 if __name__ == '__main__':
     app.run(debug=True)
