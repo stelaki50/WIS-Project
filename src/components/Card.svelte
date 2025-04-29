@@ -1,13 +1,33 @@
 <script>
     export let product;
-
+    
     async function manageLike(){
-        console.log("Like pressed")
+        try {
+            const response = await fetch('http://localhost:5000/api/likes', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ id: product._id })});
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                console.error('Error liking product:', errorData.error);
+                return;
+            }
+
+            const data = await response.json();
+            console.log('Like successful:', data);
+
+            // After successful like, update the product's likes count locally
+            product.likes += 1;
+
+        } catch (error) {
+            console.error('Error:', error);
+        }
     }
 
     function handleClick(product) {
-        console.log("Clicked product:", product);
-    }
+        console.log("Clicked product:", product);}
+        
 </script>
 
 <div class="card">
@@ -29,7 +49,7 @@
   </div>
 
    <div class="likes-price-cart">
-       <button class=likeButton on:click={manageLike}>Like</button>
+    <button class=likeButton on:click={manageLike}>Like</button>
        {product.likes}
 
        <span class="priceTag">Price: {product.price}&euro;</span>
