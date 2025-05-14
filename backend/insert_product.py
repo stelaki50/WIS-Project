@@ -3,6 +3,7 @@ class InsertProduct:
     def __init__(self, collection):
         self.collection = collection
         print("NOTE: The image of the product must be in /static/products_images/product-image.jgp")
+        self.category = input("Category (Graphics Card, Processor, Motherboard, RAM, M2-SSD-HDD, Case, CPU Cooler, Power Supply): ")
         self.image = input("Enter image file name (eg: product-image.jpg): ")
         self.name = input("Enter the name of the product: ")
         self.description = input("Enter a quick description of the product: ")
@@ -10,6 +11,7 @@ class InsertProduct:
         self.likes = 0
 
         self.new_product = {
+            "category": self.category,
             "image": self.image,
             "name": self.name,
             "description": self.description,

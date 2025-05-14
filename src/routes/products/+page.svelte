@@ -8,17 +8,22 @@
   let products = [];
   let filteredProducts = [];
   let variable = '';
+  let filter_category = 'All products';
+
+  let filter_categories = [
+    'All products', 'Graphics Card', 'Processor', 'Motherboard', 
+    'RAM', 'M2-SSD-HDD', 'Case', 'CPU Cooler', 'Power Supply']
 
   onMount(async () => {
-  try {
+    try {
     const res = await fetch('http://localhost:5000/api/products');
     const data = await res.json();
     console.log('Fetched products:', data);
+
     products = data;
     filteredProducts = data;
   } catch (err) {
-    console.error('Fetch failed:', err);
-  }});
+    console.error('Fetch failed:', err);}});
 
 async function searchEngine(variable){
 
@@ -34,12 +39,8 @@ async function searchEngine(variable){
       if(product.name.toLowerCase().includes(variable.toLowerCase())) {
         console.log("We find ",product);
         product_find = true;
-        filteredProducts.push(product); //If we found a product that match with at least one word of the input user 
+        filteredProducts.push(product);}} //If we found a product that match with at least one word of the input user 
         //we add it into filteredProducts
-      }
-
-    } 
-
 
     // Checks if we find a product after searching 
     if(product_find == false){
@@ -47,10 +48,13 @@ async function searchEngine(variable){
       return filteredProducts //Return the products to show up in the web page
     }else{
       //If not products was found then return the empty filteredProducts 
-      return filteredProducts;
-    }
-    
-  }
+      return filteredProducts;}}
+  
+      $: filteredProducts = products.filter(product => {
+    const matchesName = product.name.toLowerCase().includes(variable.toLowerCase());
+    const matchesCategory =
+      filter_category === 'All products' || product.category === filter_category;
+    return matchesName && matchesCategory;});
 
 </script>
   
@@ -70,7 +74,7 @@ main {
 	padding-right: 20px;
 }
 
-.search{
+.search-and-filter{
 	padding: 20px;
 	padding-bottom: 30px;
 	text-align: center;
@@ -89,11 +93,14 @@ input{
 </style>
 
 <main>
-	<div class="search">
+	<div class="search-and-filter">
 		<input type="text" bind:value={variable} placeholder="Search for a product..." />
-		<Button type='searchButton' on:click={() => searchEngine(variable)}>
-      Search
-    </Button>
+
+    <select bind:value={filter_category} style="margin-left: 10px; height: 35px; border-radius: 10px;">
+      {#each filter_categories as cat}
+        <option value={cat}>{cat}</option>
+      {/each}
+    </select>
 
 	</div>
 	<div class="product-list">
