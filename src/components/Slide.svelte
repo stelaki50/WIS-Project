@@ -1,4 +1,5 @@
 <script>
+	import { fade } from 'svelte/transition';
 
 	const slideshow_images = [
     {
@@ -38,70 +39,80 @@
   
 </script>
 
-<style>	
+
+<style>
+	.slideShow {
+	  position: relative;
+	  width: 900px;
+	  height: 550px;
+	  margin: auto;
+	  margin-top: 3rem;
+	  overflow: hidden;
+	  border-radius: 1rem;
+	  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+	}
 	
-.slideShow {
-	position: relative;
-	width: 800px;
-	margin: auto;
-	margin-top: 3rem;
-	overflow: hidden;
-	border-radius: 1rem;
-	box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-}
-
-.slideShow img {
-	width: 800px;
-	height: 500px;
-	display: block;
-	border-radius: 0.5rem;
-	margin: 0 auto;
-}
-
-.slideShow .buttons {
-	display: flex;
-	justify-content: space-between;
-	position: absolute;
-	width: 95%;
-	top: 50%;
-	transform: translateY(-10%);
-	padding: 0 1rem;
-}
-
-button {
-	background: rgba(0, 0, 0, 0.5);
-	border: none;
-	color: white;
-	padding: 0.5rem 1rem;
-	font-size: 1rem;
-	cursor: pointer;
-	border-radius: 0.5rem;
-	transition: background 0.3s;
-}
-
-button:hover {
-	background: rgba(0, 0, 0, 0.8);
-}
-
-.description{
-	font-family: 'Ubuntu', sans-serif;
-	position: relative;
-	width: 100%;
-	height: 30px;
-	margin: 0 auto;
-	margin-top: 1em;
-	margin-left: 2em;
-}
-
+	.slide {
+	  position: absolute;
+	  width: 100%;
+	  height: 100%;
+	}
+	
+	.slide img {
+	  width: 100%;
+	  height: 100%;
+	  object-fit: cover;
+	  border-radius: 1rem;
+	}
+	
+	.slideShow .buttons {
+	  display: flex;
+	  justify-content: space-between;
+	  position: absolute;
+	  width: 95%;
+	  top: 50%;
+	  transform: translateY(-50%);
+	  padding: 0 1rem;
+	  z-index: 10;
+	}
+	
+	button {
+	  background: rgba(0, 0, 0, 0.5);
+	  border: none;
+	  color: white;
+	  padding: 0.5rem 1rem;
+	  font-size: 1.5rem;
+	  cursor: pointer;
+	  border-radius: 0.5rem;
+	  transition: background 0.3s;
+	}
+	
+	button:hover {
+	  background: rgba(0, 0, 0, 0.8);
+	}
+	
+	.description {
+	  position: absolute;
+	  bottom: 0;
+	  width: 100%;
+	  padding: 1rem;
+	  background: rgba(0, 0, 0, 0.5);
+	  color: white;
+	  font-family: 'Ubuntu', sans-serif;
+	  font-size: 1rem;
+	  border-bottom-left-radius: 1rem;
+	  border-bottom-right-radius: 1rem;
+	  text-align: center;
+	}
 </style>
+	
 
 <div class="slideShow">
 	{#each [slideshow_images[current]] as item (item.url)}
-		<img
-			src={item.url}
-			alt={item.description}
-		/>
+	<div class="slide" transition:fade>
+		<img src={item.url} alt={item.description} />
 		<p class="description">{item.description}</p>
+	  </div>
 	{/each}
 
 	<div class="buttons">
