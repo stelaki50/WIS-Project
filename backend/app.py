@@ -10,7 +10,7 @@ load_dotenv()
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
-static_dir = os.path.join(basedir, '..', 'static')
+static_dir = os.path.join(basedir, '../frontend', 'static')
 
 app = Flask(__name__, static_url_path='/static', static_folder=static_dir)
 
