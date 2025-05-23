@@ -58,7 +58,7 @@
         <div class="nav-buttons">
             <a href="/"><Button>Home</Button></a>
             <a href="/products/"><Button>Products</Button></a>
-            <a href="/contact"><Button>Services</Button></a>
+            <a href="/services"><Button>Services</Button></a>
             <a href="/about"><Button>About Us</Button></a>
         </div>
     </div>
