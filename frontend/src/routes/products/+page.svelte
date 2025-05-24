@@ -25,36 +25,40 @@
   } catch (err) {
     console.error('Fetch failed:', err);}});
 
-async function searchEngine(variable){
 
-    console.log('searching for a product:', variable) 
-    const res = await fetch('http://localhost:5000/api/products');
-    const data = await res.json();
-    console.log('Fetched products:', data);
-    products = data;
-    let product_find=false // Indicates if a product was found or not
-    filteredProducts = []; //At first we assume that there are not products found 
-    for (const product of products){
-      
-      if(product.name.toLowerCase().includes(variable.toLowerCase())) {
-        console.log("We find ",product);
-        product_find = true;
-        filteredProducts.push(product);}} //If we found a product that match with at least one word of the input user 
-        //we add it into filteredProducts
 
-    // Checks if we find a product after searching 
-    if(product_find == false){
-      console.log("We dint find a product");
-      return filteredProducts //Return the products to show up in the web page
-    }else{
-      //If not products was found then return the empty filteredProducts 
-      return filteredProducts;}}
-  
-      $: filteredProducts = products.filter(product => {
-    const matchesName = product.name.toLowerCase().includes(variable.toLowerCase());
-    const matchesCategory =
-      filter_category === 'All products' || product.category === filter_category;
-    return matchesName && matchesCategory;});
+    async function searchEngine(searchTerm) {
+
+      console.log('Searching for a product:', searchTerm);
+
+      try {
+          // Send a GET request to the backend API with the search term as a query parameter
+          const response = await fetch(`http://localhost:5000/api/search?name=${encodeURIComponent(searchTerm)}`, {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+          });
+
+          if (!response.ok) {
+            const errorData = await response.json();
+            console.error('Error fetching products:', errorData.error);
+            return [];
+          }
+
+          const data = await response.json();
+          console.log('Fetched products:', data);
+
+          return data; // Return the products fetched from the backend
+        
+      }catch (error) {
+        console.error('Fetch failed:', error);
+        return [];
+      }
+}
+
+async function handleSearch() {
+    console.log("User searched for:", variable);
+    filteredProducts = await searchEngine(variable);
+  }
 
 </script>
   
@@ -95,6 +99,10 @@ input{
 <main>
 	<div class="search-and-filter">
 		<input type="text" bind:value={variable} placeholder="Search for a product..." />
+
+
+    <Button on:click={() => handleSearch()}>Search</Button>
+     
 
     <select bind:value={filter_category} style="margin-left: 10px; height: 35px; border-radius: 10px;">
       {#each filter_categories as cat}
