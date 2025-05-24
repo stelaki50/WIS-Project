@@ -5,6 +5,7 @@ Created 3 Dockerfiles in the project root directory:<br>
 1: Dockerfile.frontend -> web server (sveltekit) with all the files <br>
 2: Dockerfile.backend -> python application Flask REST API
 3: Dockerfile.mongo -> mongoDB database (atlas)
+
 ## Run locally
 
 Follow the steps below to clone and run the project locally.
