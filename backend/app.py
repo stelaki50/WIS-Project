@@ -71,25 +71,30 @@ def like_product():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+ 
 # search for a product by name
 @app.route('/api/search', methods=['GET'])
 def search_products():
-    name_query = request.args.get('name', '')
-
-    if not name_query:
-        return jsonify({'error': 'Name query is required'}), 400
+    name_query = request.args.get('name', '').strip()
 
     try:
-        # find products where name matches exactly and sort them in descending order
-        products = list(collection.find({'name': {'$regex': name_query, '$options': 'i'}}).sort('price', -1))
+        if name_query == "":
+            #return all products 
+            products = list(collection.find())
+        else:
+            # search for products where the name contains the query (case-insensitive)
+            # and  sort them in increasing order
+            products = list(collection.find(
+                {'name': {'$regex': name_query, '$options': 'i'}}
+            ).sort('price', 1))
 
         serialized_products = [serialize_product(p) for p in products]
-
         return jsonify(serialized_products), 200
 
     except Exception as e:
-        return jsonify({'An error occured': str(e)}), 500
-
+        return jsonify({'error': str(e)}), 500
+    
+    
 #return most popular products   
 @app.route('/api/popular_products', methods=['GET'])
 def popular_products():
