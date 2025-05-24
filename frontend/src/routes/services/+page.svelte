@@ -169,7 +169,7 @@ img
 
         <div class="section1">
 
-            <img src="/images/services_photos/pc_build_hands.jpg" width="400" height="300" class="first_img">
+            <img src="/images/services_photos/pc_build_hands.jpg" alt="pc_building_hands" width="400" height="300" class="first_img">
             <p class="section1-p">Behind every powerful PC we build is a pair of skilled hands and a 
                 passion for technology. We don’t just assemble parts; we craft the heartbeat of your digital world.
                 Precision meets passion—our experts meticulously assemble every PC with care and expertise. 
@@ -180,7 +180,7 @@ img
 
         <div class="section2">
 
-            <img src="/images/services_photos/pc_repair.jpg" width="400" height="300" class="second_img">
+            <img src="/images/services_photos/pc_repair.jpg" alt="pc_repair" width="400" height="300" class="second_img">
             <p class="section2-p">Our dedicated repair team brings years of hands-on experience to every 
                 hardware challenge. From diagnosing faulty components to restoring full system functionality, 
                 we treat every device with the care and precision it deserves. Whether it’s a damaged motherboard, 
@@ -191,7 +191,7 @@ img
 
         <div class="section3">
 
-            <img src="/images/services_photos/pc_software.jpg" alt="pcbuildhands" width="400" height="300" class="third_img">
+            <img src="/images/services_photos/pc_software.jpg" alt="pc_software" width="400" height="300" class="third_img">
             <p class="section3-p">From removing stubborn viruses to installing the latest software suites, our team handles it 
                 all with precision. Whether it's a performance tune-up or a full system setup, we ensure your software runs 
                 smoothly and securely. We specialize in operating system reinstalls, driver updates, and application 
@@ -201,7 +201,7 @@ img
 
         <div class="section4">
 
-            <img src="/images/services_photos/pc_troubleshoot.jpg" width="400" height="300" class="fourth_img">
+            <img src="/images/services_photos/pc_troubleshoot.jpg" alt="pc_troubleshoot" width="400" height="300" class="fourth_img">
             <p class="section4-p">Not sure what’s wrong with your device? Our diagnostics team dives deep to pinpoint the issue
                 fast—no guesswork, just accurate analysis and clear solutions you can trust. </p>
         </div>
