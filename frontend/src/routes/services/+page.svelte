@@ -109,7 +109,7 @@ img
     border-radius: 10px;
 }
 
-.first_img, .third_img, .fifth_img
+.first_img, .third_img
 {
     float: left;
 }
@@ -149,6 +149,10 @@ img
     align-items: center;
     justify-content: center;
     align-content: center;    
+}
+
+a{
+    text-decoration: none;
 }
 
 

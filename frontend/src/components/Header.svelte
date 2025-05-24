@@ -51,7 +51,7 @@
 <header>
     <div class="logo-section">
         <img src="/images/main_logo_img.jpg" alt="Logo" class="logo-img" />
-        <h1 class="site-title">PC Parts E-shop</h1>
+        <h1 class="site-title">PCPartakias e-shop</h1>
     </div>
 
     <div class="nav-container">
