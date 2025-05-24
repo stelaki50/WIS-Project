@@ -1,0 +1,20 @@
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "80:80"
+
+  backend:
+    dns:
+      - 8.8.8.8
+    network_mode: host
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    ports:
+      - "5050:5000"
+    env_file:
+      - backend/.env

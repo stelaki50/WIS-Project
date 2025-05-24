@@ -1,0 +1,7 @@
+# Dockerfile.mongo
+FROM mongo:8.0
+
+# Optional: Copy your initial DB seed data or config
+# COPY init.js /docker-entrypoint-initdb.d/
+
+EXPOSE 27017

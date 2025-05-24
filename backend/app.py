@@ -1,4 +1,4 @@
-from flask                  import Flask, jsonify, request
+from flask                  import Flask, jsonify, request, send_from_directory
 from pymongo                import MongoClient
 from flask_cors             import CORS
 from bson.objectid          import ObjectId
@@ -14,7 +14,7 @@ static_dir = os.path.join(basedir, '../frontend', 'static')
 
 app = Flask(__name__, static_url_path='/static', static_folder=static_dir)
 
-CORS(app, origins=["http://localhost:5173"])
+CORS(app)
 
 mongo_uri = os.getenv("MONGO_URI")
 
@@ -102,4 +102,4 @@ def popular_products():
         return jsonify({'An error occured': str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=5000)

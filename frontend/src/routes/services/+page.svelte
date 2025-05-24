@@ -141,13 +141,7 @@ img
     border-radius: 10px;
 }
 
-.section5
-{
-    border-radius: 10px;
-    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.7);
-}
-
-.section1-p, .section2-p, .section3-p, .section4-p, .section5-p
+.section1-p, .section2-p, .section3-p, .section4-p
 {
     font-family: 'Ubuntu', cursive;
     font-size: 2em;

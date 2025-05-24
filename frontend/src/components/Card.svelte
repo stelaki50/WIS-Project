@@ -40,7 +40,7 @@
 
    <div class="content-row">
     <div class="image">
-        <img src={`http://localhost:5000/static/products_images/${product.image}`} alt={product.name} />
+        <img src={`/products_images/${product.image}`} alt={product.name} />
     </div>
 
     <div class="description">
