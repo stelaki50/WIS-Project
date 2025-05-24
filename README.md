@@ -21,6 +21,7 @@ cd wis-project
 In the project root directory, in bash:
 
 ```bash
+sudo snap install docker
 sudo docker-compose up --build
 ```
 
