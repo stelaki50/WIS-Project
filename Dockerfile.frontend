@@ -1,13 +1,14 @@
 # Dockerfile.frontend
 
-# Build the frontend
 FROM node:24-slim AS builder
 
 WORKDIR /app
 COPY frontend/ .
+
+# commands needed to run the frontend sveltekit
 RUN npm install && npm run build
 
-# Serve the built static files with Nginx
+# serve built static files with Nginx
 FROM nginx:alpine
 COPY --from=builder /app/build /usr/share/nginx/html
 EXPOSE 80
