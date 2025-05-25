@@ -69,10 +69,16 @@ img {
 }
 
 .total-price-buy{
-    font-size: 40px;
-    width: 40%;
-    text-align: center;
-    
+    display: flex;
+	align-items: flex-start;
+	gap: 4rem;
+	padding: 2rem;
+	margin-left: 35%;
+    margin-bottom: 40px;
+	flex-wrap: wrap;
+    width: 30%;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
 
@@ -100,7 +106,7 @@ img {
         </div>
       </li>
     {/each}
-  </ul>
+</ul>
 
   <div class="total-price-buy">
     <h3>Total price: 
