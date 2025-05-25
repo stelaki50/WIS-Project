@@ -1,4 +1,6 @@
 <script>
+    import { cart } from '$lib/stores/cart.js';
+  import Button from './button.svelte';
     export let product;
     
     async function manageLike(){
@@ -27,6 +29,18 @@
 
     function handleClick(product) {
         console.log("Clicked product:", product);}
+
+    function addToCart() {
+        cart.update(current => {
+        const existing = current.find(item => item._id === product._id);
+        if (existing) {
+            return current.map(item =>
+                item._id === product._id
+                    ? { ...item, quantity: item.quantity + 1 }
+                    : item
+            );
+        } else {
+            return [...current, { ...product, quantity: 1 }];}});}
         
 </script>
 
@@ -54,7 +68,8 @@
 
        <span class="priceTag">Price: {product.price}&euro;</span>
 
-       <button class=cart>Add to Cart</button>
+       <Button class="cart" on:click={addToCart}>Add to Cart</Button>
+
    </div>
    
 
@@ -124,13 +139,6 @@ a:hover {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     margin-right: 15px;
     margin-left: 20px;
-}
-
-.cart{
-    border: 1px solid black;
-    border-radius: 10px;
-    font-weight: bold;
-    cursor: pointer;
 }
 
 </style>

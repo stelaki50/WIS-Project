@@ -34,4 +34,23 @@ button:hover {
     padding: 8px 20px;
 }
 
+.add-sub{
+    font-size: 15px;
+    padding: 3px 10px;
+}
+
+.rmv{
+    font-size: 15px;
+    padding: 7px 8px;
+}
+
+.cart{
+    border: 1px solid black;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 15px;
+    padding: 5px 5px;
+}
+
 </style>
