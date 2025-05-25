@@ -1,7 +1,19 @@
 <script>
 	import { fade } from 'svelte/transition';
+	import { onMount } from 'svelte';
 
-	const slideshow_images = [
+	let slideshow_images=[];
+
+    onMount(async () => {
+        try {
+        const res = await fetch('http://localhost:5000/api/popular_products');
+        const data = await res.json();
+        console.log('Fetched products:', data);
+
+        slideshow_images = data;} catch (err) {
+    	console.error('Fetch failed:', err);}});
+
+	slideshow_images = [
     {
       url: "/images/rtx_5000_series_gpu.jpg",
       description: "Nvidia RTX 50-series GPUs: Next-generation Nvidia Blackwell GPU architecture",
@@ -21,10 +33,6 @@
 	{
       url: "/images/corsair_icue_water_cooling.png",
       description: "Check out the unmatched thermal performance iCUE series water coolers from Corsair",
-    },
-	{
-      url: "/images/intel_cpu_14th_generation.png",
-      description: "The Intel® Core desktop processors (14th gen) deliver the ultimate immersive experience",
     },];
 
 	let current = 0;

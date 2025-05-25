@@ -94,17 +94,17 @@ def search_products():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
     
-    
-#return most popular products   
+#return most popular products
 @app.route('/api/popular_products', methods=['GET'])
 def popular_products():
     try:
-        
-        popular_products = list(collection.find().sort("likes", reverse=True).limit(5))
+        popular_products = list(collection.find().sort("likes", -1).limit(5))
+
+        popular_products = [serialize_product(p) for p in popular_products]
+
         return jsonify(popular_products), 200
-    
     except Exception as e:
-        return jsonify({'An error occured': str(e)}), 500
+        return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
