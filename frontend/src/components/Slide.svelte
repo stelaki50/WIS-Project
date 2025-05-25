@@ -2,8 +2,11 @@
 	import { fade } from 'svelte/transition';
 	import { onMount } from 'svelte';
 
-	let slideshow_images=[];
-
+	let slideshow_images = [
+    {
+      image: "",
+      description: "loading...",
+    },];
     onMount(async () => {
         try {
         const res = await fetch('http://localhost:5000/api/popular_products');
@@ -13,27 +16,7 @@
         slideshow_images = data;} catch (err) {
     	console.error('Fetch failed:', err);}});
 
-	slideshow_images = [
-    {
-      url: "/images/rtx_5000_series_gpu.jpg",
-      description: "Nvidia RTX 50-series GPUs: Next-generation Nvidia Blackwell GPU architecture",
-    },
-    {
-      url: "/images/ryzen_9_7000_series_cpu.jpg",
-      description: "New AMD Ryzen 9950X3D and 9900X3D: Class-leading technology and performance",
-    },
-    {
-      url: "/images/crucial_ddr5_ram.jpg",
-      description: "Crucial's fastest DDR5 RAM modules for competitive tasks with great efficiency",
-    },
-	{
-      url: "/images/nzxt_pc_case.jpg",
-      description: "Get your PC to the next level with the best PC Cases out there from NZXT",
-    },
-	{
-      url: "/images/corsair_icue_water_cooling.png",
-      description: "Check out the unmatched thermal performance iCUE series water coolers from Corsair",
-    },];
+
 
 	let current = 0;
 
@@ -102,7 +85,7 @@
 	.description {
 	  position: absolute;
 	  bottom: 0;
-	  width: 100%;
+	  width: 96.5%;
 	  padding: 1rem;
 	  background: rgba(0, 0, 0, 0.5);
 	  color: white;
@@ -116,9 +99,9 @@
 	
 
 <div class="slideShow">
-	{#each [slideshow_images[current]] as item (item.url)}
+	{#each [slideshow_images[current]] as item (item.image)}
 	<div class="slide" transition:fade>
-		<img src={item.url} alt={item.description} />
+		<img src={`/products_images/${item.image}`} alt={item.description} />
 		<p class="description">{item.description}</p>
 	  </div>
 	{/each}
