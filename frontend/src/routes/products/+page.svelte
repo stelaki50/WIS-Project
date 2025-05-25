@@ -51,14 +51,17 @@
         
       }catch (error) {
         console.error('Fetch failed:', error);
-        return [];
-      }
-}
+        return [];}}
 
 async function handleSearch() {
     console.log("User searched for:", variable);
-    filteredProducts = await searchEngine(variable);
-  }
+    filteredProducts = await searchEngine(variable);}
+
+  // filter logic
+  function filterByCategory(list) {
+    if (filter_category === 'All products') return list;
+    return list.filter(product => product.category === filter_category);}
+  $: filteredProducts = filterByCategory(filteredProducts);
 
 </script>
   
