@@ -6,7 +6,7 @@
     
 </script>
 
-<button class="{type}" on:click>
+<button class="{type} {$$props.class}" on:click>
     <slot />
 </button>
 

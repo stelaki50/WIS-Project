@@ -25,7 +25,7 @@
     }
 
     .site-title {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         font-weight: bold;
         color: #222;
     }
@@ -38,11 +38,49 @@
 
     .nav-buttons {
         display: flex;
-        gap: 8rem; /* space between buttons */
+        gap: 5rem; /* space between buttons */
     }
 
     a {
         text-decoration: none;
+    }
+
+    .cart-img{
+        width: 60px;
+        height: 45px;
+    }
+
+    .cart-tooltip {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .tooltip-text {
+        visibility: hidden;
+        width: 80px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        border-radius: 5px;
+        padding: 5px 0;
+
+        /* Position the tooltip */
+        position: absolute;
+        bottom: -50%; /* show above the image */
+        left: 50%;
+        transform: translateX(-50%);
+
+        /* Smooth fade-in */
+        opacity: 0;
+        transition: opacity 0.3s;
+        font-size: 14px;
+        z-index: 10;
+    }
+
+    .cart-tooltip:hover .tooltip-text {
+        visibility: visible;
+        opacity: 1;
     }
 
 </style>
@@ -60,6 +98,9 @@
             <a href="/products/"><Button>Products</Button></a>
             <a href="/services"><Button>Services</Button></a>
             <a href="/about"><Button>About Us</Button></a>
+            <a href="/cart" class="cart-tooltip">
+                <img class="cart-img" src="images/shopping_cart_img.png" alt="shopping_cart_img"/>
+                <span class="tooltip-text">View Cart</span></a>
         </div>
     </div>
 </header>

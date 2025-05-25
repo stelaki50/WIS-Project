@@ -97,21 +97,21 @@ input{
   border-radius: 10px;
 }
 
+
+
 </style>
 
 <main>
 	<div class="search-and-filter">
 		<input type="text" bind:value={variable} placeholder="Search for a product..." />
 
-
-    <Button on:click={() => handleSearch()}>Search</Button>
-     
-
     <select bind:value={filter_category} style="margin-left: 10px; height: 35px; border-radius: 10px;">
       {#each filter_categories as cat}
         <option value={cat}>{cat}</option>
       {/each}
     </select>
+
+    <Button on:click={() => handleSearch()} class="searchButton">Search</Button>
 
 	</div>
 	<div class="product-list">
