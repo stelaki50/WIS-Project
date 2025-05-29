@@ -3,6 +3,18 @@
 </script>
 
 <style>
+
+    :root{
+    --gradient: linear-gradient(
+        45deg,
+        #845ec2,
+        #d65db1,
+        #ff6f91,
+        #ff9671,
+        #ffc75f,
+        #f9f871);
+    }
+
     header {
         display: flex;
         align-items: center;
@@ -25,9 +37,21 @@
     }
 
     .site-title {
-        font-size: 1.3rem;
-        font-weight: bold;
-        color: #222;
+    font-weight: 900;
+    font-style: 'Ubuntu';
+    font-size: 1.5rem;
+    color: #ee6352;
+    margin: 0;
+    background-image: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 300%;
+    animation: bg-animation 10s infinite alternate;
+    }
+
+    @keyframes bg-animation{
+        0% {background-position: left;}
+        100% {background-position: right;}
     }
 
     .nav-container {
