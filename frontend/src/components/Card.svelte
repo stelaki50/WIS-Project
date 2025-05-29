@@ -30,7 +30,7 @@
     function handleClick(product) {
         console.log("Clicked product:", product);}
 
-    function addToCart() {
+   function addToCart() {
         cart.update(current => {
         const existing = current.find(item => item._id === product._id);
         if (existing) {

@@ -1,5 +1,6 @@
 
 <script>
+    import { cart } from '$lib/stores/cart.js';
     export let data;
     let { product } = data;
   
@@ -12,10 +13,20 @@
       if (quantity > 1)
           quantity = quantity - 1;
     }
-  
-    function addToCard(){
-      console.log("added to card");
-    }
+
+    function addToCart() {
+        cart.update(current => {
+        const existing = current.find(item => item._id === product._id);
+        if (existing) {
+            return current.map(item =>
+                item._id === product._id
+                    ? { ...item, quantity: quantity + 1 }
+                    : item
+            );
+        } else {
+            return [...current, { ...product, quantity }];}});}
+
+   
   </script>
   
   <div class="product-container">
@@ -33,10 +44,9 @@
         <button on:click={increase}>+</button>
       </div>
   
-      <button class="add-to-cart" on:click={addToCart}>
-        Add to Cart
-      </button>
-  
+      <button class="add-to-cart" on:click={addToCart}>Add to Cart</button>
+
+
       <h3 class="description-title">Details</h3>
       <p class="description">{product.description}</p>
   
