@@ -29,6 +29,7 @@
    
   </script>
   
+  <main>
   <div class="product-container">
     <div class="product-image">
       <img src={`/products_images/${product.image}`} alt={product.name} />
@@ -52,8 +53,13 @@
   
     </div>
   </div>
-  
+  </main>
+
   <style>
+
+    main{
+      background-color: #8FD6E3;
+    }
   .product-container {
     display: flex;
     grid-template-columns: 1fr 1.4fr;
