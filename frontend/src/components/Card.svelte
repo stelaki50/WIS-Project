@@ -46,11 +46,11 @@
 
 <div class="card">
 
-   <h4>
-    <a href="#" on:click={() => handleClick(product)}>
-        {product.name}
-      </a>
-   </h4>
+    <h4>
+        <a href={`/products/${product._id}`}>
+            {product.name}
+        </a>
+       </h4>
 
    <div class="content-row">
     <div class="image">

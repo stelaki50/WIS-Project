@@ -106,5 +106,20 @@ def popular_products():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+
+
+# Get a single product by ID
+@app.route('/api/products/<product_id>')
+def get_product(product_id):
+    try:
+        product = collection.find_one({'_id': ObjectId(product_id)})
+        if product:
+            return jsonify(serialize_product(product))
+        else:
+            return jsonify({'error': 'Product not found'}), 404
+    except Exception as e:
+        return jsonify({'error': str(e)}), 400
+    
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
