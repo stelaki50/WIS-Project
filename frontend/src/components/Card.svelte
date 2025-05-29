@@ -1,4 +1,5 @@
 <script>
+    import { goto } from '$app/navigation';
     export let product;
     
     async function manageLike(){
@@ -27,15 +28,20 @@
 
     function handleClick(product) {
         console.log("Clicked product:", product);}
+
+    
+  function goToProductDetails() {
+    goto(`/product/${product._id}`); 
+  }
         
 </script>
 
 <div class="card">
 
    <h4>
-    <a href="#" on:click={() => handleClick(product)}>
+    <a href={`/products/${product._id}`}>
         {product.name}
-      </a>
+    </a>
    </h4>
 
    <div class="content-row">
@@ -90,6 +96,7 @@
     width: 70px;
     height: 70px;
 }
+
 
 .content-row {
     display: flex;
