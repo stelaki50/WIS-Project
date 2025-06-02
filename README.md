@@ -27,9 +27,24 @@ sudo docker-compose up --build
 
 This should deploy the project and you can access it after typing "localhost" in your browser.
 
-### **3. Important notices**
-This is just a demonstration of what we're trying to accomplish as a team,
-the database itself is not published here, for security reasons.
-For this safe result a .env file is created and this: MONGO_URI=mongodb+srv://username:password@your-project-db.ueop5j7.mongodb.net/?retryWrites=true&w=majority&appName=Your-Project-DB is inside of the file, so we can access safely the database.
-Also, a simple CLI script in Python (create_db.py) for adding, deleting and viewing products in our database is created.
-This script is very useful and you can test it yourself on your projects or on our project as well (after connecting to your MongoDB atlas database server).
+### **3. Run using terminal**
+In the project frontend directory, in bash:
+
+```bash
+npm install
+npm run build
+npm run dev
+```
+
+In the project backend directory, in bash:
+```bash
+python3.x app.py
+```
+
+This should deploy the project and you can access it after typing "localhost:5173" in your browser.
+
+### **4. Important notices**
+The SectionD branch is the final section of the project. The project sucessfully finished. A temporary user with read and write
+access to the database is created (if it was read-only some functionalities of the site would not work). Note that every item/product
+that appears on the website was used for the project only. THIS IS A UNIVERSITY PROJECT, which pushes students who would like to take a 
+step into web development by creating a simple site of their choosing. Feel free to contribute.
