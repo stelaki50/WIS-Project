@@ -10,11 +10,12 @@ Created 3 Dockerfiles in the project root directory:<br>
 
 Follow the steps below to clone and run the project locally.
 
-### 1. Clone the Repository
+### 1. Clone the Repository (and choose the branch SectionD)
 
 ```bash
 git clone https://github.com/your-username/wis-project.git
 cd wis-project
+git checkout SectionD
 ```
 
 ### **2. Run docker-compose**
