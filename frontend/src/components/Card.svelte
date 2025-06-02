@@ -63,7 +63,10 @@
   </div>
 
    <div class="likes-price-cart">
-    <button class=likeButton on:click={manageLike}>Like</button>
+    <button on:click={manageLike} class="likeButton" aria-label="Like">
+  <img src="/images/like_button.png" alt="" />
+    </button>
+
        {product.likes}
 
        <span class="priceTag">Price: {product.price}&euro;</span>
@@ -92,12 +95,17 @@
     padding: 10px;
 }
 
-.likeButton{
-    background-color: rgb(0, 174, 255);
-    border: 1px solid #53535390;
-    border-radius: 10px;
-    outline-color: black;
-    cursor: pointer;
+.likeButton {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.likeButton img {
+  display: block;
+  height: 30px;
 }
 
 .image{
