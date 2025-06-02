@@ -28,6 +28,11 @@ sudo docker-compose up --build
 This should deploy the project and you can access it after typing "localhost" in your browser.
 
 ### **3. Run using terminal**
+First, install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
 In the project frontend directory, in bash:
 
 ```bash
@@ -38,7 +43,7 @@ npm run dev
 
 In the project backend directory, in bash:
 ```bash
-python3.x app.py
+python3.10 app.py
 ```
 
 This should deploy the project and you can access it after typing "localhost:5173" in your browser.
