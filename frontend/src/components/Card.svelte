@@ -1,7 +1,8 @@
 <script>
     import { cart } from '$lib/stores/cart.js';
-  import Button from './button.svelte';
+    import Button from './button.svelte';
     export let product;
+    let showPopup = false;
     
     async function manageLike(){
         try {
@@ -40,7 +41,11 @@
                     : item
             );
         } else {
-            return [...current, { ...product, quantity: 1 }];}});}
+            return [...current, { ...product, quantity: 1 }];}});
+        
+        showPopup = true;
+        setTimeout(() => {
+        showPopup = false;}, 2000);}
         
 </script>
 
@@ -66,12 +71,15 @@
     <button on:click={manageLike} class="likeButton" aria-label="Like">
   <img src="/images/like_button.png" alt="" />
     </button>
-
        {product.likes}
 
        <span class="priceTag">Price: {product.price}&euro;</span>
 
        <Button class="cart" on:click={addToCart}>Add to Cart</Button>
+
+       {#if showPopup}
+        <div class="popup">Product successfully added to cart!</div>
+        {/if}
 
    </div>
    
@@ -147,6 +155,20 @@ a:hover {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     margin-right: 15px;
     margin-left: 20px;
+}
+
+.popup {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #4caf50;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  z-index: 1000;
+  font-family: 'Ubuntu';
+  font-size: 14px;
 }
 
 </style>

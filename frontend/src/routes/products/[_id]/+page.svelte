@@ -3,6 +3,7 @@
     import { cart } from '$lib/stores/cart.js';
     export let data;
     let { product } = data;
+    let showPopup = false;
   
     let quantity = 1; //The amount of products somone wants to add in their card
   
@@ -24,7 +25,11 @@
                     : item
             );
         } else {
-            return [...current, { ...product, quantity }];}});}
+            return [...current, { ...product, quantity }];}});
+        
+        showPopup = true;
+        setTimeout(() => {
+        showPopup = false;}, 2000);}
 
    
   </script>
@@ -53,6 +58,11 @@
   
     </div>
   </div>
+
+        {#if showPopup}
+        <div class="popup">Product successfully added to cart!</div>
+        {/if}
+
   </main>
 
   <style>
@@ -148,6 +158,20 @@
     font-size: 1.4rem;
     margin-top: 2rem;
     color: #333;
+  }
+
+  .popup {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #4caf50;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  z-index: 1000;
+  font-family: 'Ubuntu';
+  font-size: 14px;
   }
   </style>
   
