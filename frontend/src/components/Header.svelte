@@ -123,7 +123,7 @@
             <a href="/services"><Button>Services</Button></a>
             <a href="/about"><Button>About Us</Button></a>
             <a href="/cart" class="cart-tooltip">
-                <img class="cart-img" src="images/shopping_cart_img.png" alt="shopping_cart_img"/>
+                <img class="cart-img" src="/images/shopping_cart_img.png" alt="shopping_cart_img"/>
                 <span class="tooltip-text">View Cart</span></a>
         </div>
     </div>
